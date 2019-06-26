@@ -1,9 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="manifest.appcache">
 <head>
-    <!-- Required meta tags -->
+    <!-- meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
@@ -15,26 +19,74 @@
           integrity="sha256-BtbhCIbtfeVWGsqxk1vOHEYXS6qcvQvLMZqjtpWUEx8="
           crossorigin="anonymous" />
 
+    <link rel="stylesheet" href="css/site.css?siteVersion=201906252215" />
+
     <title>Steve Gossard</title>
 </head>
 <body>
 
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light shadow p-3 mb-5 bg-white rounded">
+        <nav class="navbar navbar-expand-lg navbar-light shadow p-3 mb-3 rounded site-navebar">
             <a class="navbar-brand" href="index.html"><i class="fas fa-code"></i> Steve Gossard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="index.html">Home</a>
+                    <a class="nav-item nav-link" href="index.html">Home</a>
+                    <a class="nav-item nav-link active" href="articles/index.html">Articles</a>
+                    
                     <a class="nav-item nav-link active" href="#">About <span class="sr-only">(current)</span></a>
                 </div>
             </div>
-
         </nav>
+    </div>
 
+    <div class="container site-container">
+        <h1>About this site</h1>
+
+        <hr />
+
+        <p>
+            I started my GitHub Psges site to store code bits and pieces of code and technology inforamtion that can be used for reference.  I have added information
+            and will be adding more information on technology that I have used or explored.  Feel free to explore this information that I have places on these pages.
+        </p>
+        <p>
+            I'm not an expert.  Given today's vast technology platforms, laguages, design pattern's, framework's, etc. I don't think anyone
+            can be a a technology guru.  A person can be very proficient in the technologies that they use on a daily basis, and be knowlegable
+            in those other technologies that they use often (but maybe not daily).
+        </p>
+        <p>
+            I also feel a person must put forth a continuous effort to keep up on new and advancing features to maintain proficient at their craft so
+            that the products they create and support are efficient.  One of the best ways of doing this is the use of sites to grow your skill sets.
+            A person should also explore technologies and make reference notes for later use. <i>My GitHup Pages is my place that I am starting to place my technology exploration and reference notes. </i>
+        </p>
+
+
+        <h2>A bit about me</h2>
+
+        <p>As I stated earlier, I am no guru. I do enjoy application development.</p>
+
+        <h2>Disclaimer</h2>
+        <p>
+            All information and code (bits and pieces) are as is and if used are used at your own risk.  While I do not know of any issues, obviously code was not
+            used in every version of .Net, every browser and version of every browser.
+        </p>
+
+        <ul>
+            <li> You <b><i><u>may not</u></i></b> copy entire articles ad publish them to your own site.</li>
+            <li>You <b><i><u>may</u></i></b> place a link to these article on other pages.</li>
+        </ul>
+
+        <p>
+            This site is purely a personal web site and therefore veiws and opinions expressed are mine and mine alone.
+        </p>
+
+    </div>
+
+    <div class="container mt-3 site-footer">
+        &copy; 2019 Steve Gossard
     </div>
 
     <!-- Optional JavaScript -->
@@ -49,5 +101,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+   
 </body>
 </html>

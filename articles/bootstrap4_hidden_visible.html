@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en" manifest="manifest.appcache">
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+          integrity="sha256-BtbhCIbtfeVWGsqxk1vOHEYXS6qcvQvLMZqjtpWUEx8="
+          crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="../css/site.css?siteVersion=201906252215" />
+
+    <title>Steve Gossard</title>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light shadow p-3 mb-3 rounded site-navebar">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-code"></i> Steve Gossard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="../index.html">Home</a>
+                    <a class="nav-item nav-link" href="index.html">Articles</a>
+                    
+                    <a class="nav-item nav-link" href="../about.html">About</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container site-container">
+
+        <h1>
+            Bootstrap 4: Hidden Visible Columns
+        </h1>
+        <h6>
+            06/25/2019
+        </h6>
+        <hr />
+        <p>A cheat sheet on the hidden and vissible columns now in Bootstrap 4.</p>
+        <p>
+            The hidden-* classes no longer exist in Bootstrap 4.
+        </p>
+
+
+        Show/hide for <b>breakpoint and down:</b>
+
+        <ul>
+            <li>
+                hidden-xs-down (hidden-xs) = d-none d-sm-block
+            </li>
+            <li>
+                hidden-sm-down (hidden-sm hidden-xs) = d-none d-md-block
+            </li>
+            <li>
+                hidden-md-down (hidden-md hidden-sm hidden-xs) = d-none d-lg-block
+            </li>
+            <li>
+                hidden-lg-down = d-none d-xl-block
+            </li>
+            <li>
+                hidden-xl-down (n/a 3.x) = d-none (same as hidden)
+            </li>
+        </ul>
+
+
+        Show/hide for <b>breakpoint and up:</b>
+
+
+        <ul>
+            <li>
+                hidden-xs-up = d-none (same as hidden)
+            </li>
+            <li>
+                hidden-sm-up = d-sm-none
+            </li>
+            <li>
+                hidden-md-up = d-md-none
+            </li>
+            <li>
+                hidden-lg-up = d-lg-none
+            </li>
+            <li>
+                hidden-xl-up (n/a 3.x) = d-xl-none
+            </li>
+        </ul>
+
+
+        Show/hide <b>only for a single breakpoint:</b>
+
+        <ul>
+            <li>
+                hidden-xs (only) = d-none d-sm-block (same as hidden-xs-down)
+            </li>
+            <li>
+                hidden-sm (only) = d-block d-sm-none d-md-block
+            </li>
+            <li>
+                hidden-md (only) = d-block d-md-none d-lg-block
+            </li>
+            <li>
+                hidden-lg (only) = d-block d-lg-none d-xl-block
+            </li>
+            <li>
+                hidden-xl (n/a 3.x) = d-block d-xl-none
+            </li>
+            <li>
+                visible-xs (only) = d-block d-sm-none
+            </li>
+            <li>
+                visible-sm (only) = d-none d-sm-block d-md-none
+            </li>
+            <li>
+                visible-md (only) = d-none d-md-block d-lg-none
+            </li>
+            <li>
+                visible-lg (only) = d-none d-lg-block d-xl-none
+            </li>
+            <li>
+                visible-xl (n/a 3.x) = d-none d-xl-block
+            </li>
+        </ul>
+
+        <p>
+            Also note that d-*-block can be replaced with d-*-inline, d-*-flex, etc.. depending on the display type of the element.
+        </p>
+
+    </div>
+
+    <div class="container mt-3 site-footer">
+        &copy; 2019 Steve Gossard
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</body>
+</html>
