@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Steve Gossard -  Bootstrap 4: Hidden Visible Columns</title>
- 
-    <meta name="keywords" content=".Net, web development, html, css, bootstrap">
-    <meta name="description" content="A cheat sheet on the hidden and visible columns now in Bootstrap 4.">
+    <title>Steve Gossard - Code Bits</title>
+
+    <meta name="keywords" content=".Net, web development, html, javascript, jquery, typescript, css, bootstrap. security">
+    <meta name="description" content="Steve Gossard web development articles.">
     <meta name="author" content="Steve Gossard">
     <meta name="copyright" content="Steve Gossard">
+
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -28,9 +29,9 @@
 
     <link rel="stylesheet" href="../css/site.css?siteVersion=201906252215" />
 
-
 </head>
 <body>
+
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light shadow p-3 mb-3 rounded site-navebar">
             <a class="navbar-brand" href="../index.html"><i class="fas fa-code"></i> Steve Gossard</a>
@@ -41,9 +42,9 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="../index.html">Home</a>
-                    <a class="nav-item nav-link" href="index.html">Articles</a>
+                    <a class="nav-item nav-link active" href="#">Articles <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link active" href="../security/index.html">Security</a>
-                    <a class="nav-item nav-link active" href="../CodeBits/index.html">Code Bits</a>
+                    <a class="nav-item nav-link active" href="#">Code Bits</a>
 
                     <a class="nav-item nav-link" href="../about.html">About</a>
                 </div>
@@ -52,100 +53,26 @@
     </div>
 
     <div class="container site-container">
+        <h1>Code Bits - Index</h1>
 
-        <h1>
-            Bootstrap 4: Hidden Visible Columns
-        </h1>
-        <h6>
-            06/25/2019
-        </h6>
         <hr />
-        <p>A cheat sheet on the hidden and visible columns now in Bootstrap 4.</p>
+
+        <h6>
+            Sjg.IdentityCore
+        </h6>
         <p>
-            The hidden-* classes no longer exist in Bootstrap 4.
+            <a href="https://github.com/SteveGos/Sjg.IdentityCore">
+                Identity Framework - Extended/Enhanced
+            </a>
         </p>
-
-
-        Show/hide for <b>breakpoint and down:</b>
-
-        <ul>
-            <li>
-                hidden-xs-down (hidden-xs) = d-none d-sm-block
-            </li>
-            <li>
-                hidden-sm-down (hidden-sm hidden-xs) = d-none d-md-block
-            </li>
-            <li>
-                hidden-md-down (hidden-md hidden-sm hidden-xs) = d-none d-lg-block
-            </li>
-            <li>
-                hidden-lg-down = d-none d-xl-block
-            </li>
-            <li>
-                hidden-xl-down (n/a 3.x) = d-none (same as hidden)
-            </li>
-        </ul>
-
-
-        Show/hide for <b>breakpoint and up:</b>
-
-
-        <ul>
-            <li>
-                hidden-xs-up = d-none (same as hidden)
-            </li>
-            <li>
-                hidden-sm-up = d-sm-none
-            </li>
-            <li>
-                hidden-md-up = d-md-none
-            </li>
-            <li>
-                hidden-lg-up = d-lg-none
-            </li>
-            <li>
-                hidden-xl-up (n/a 3.x) = d-xl-none
-            </li>
-        </ul>
-
-
-        Show/hide <b>only for a single breakpoint:</b>
-
-        <ul>
-            <li>
-                hidden-xs (only) = d-none d-sm-block (same as hidden-xs-down)
-            </li>
-            <li>
-                hidden-sm (only) = d-block d-sm-none d-md-block
-            </li>
-            <li>
-                hidden-md (only) = d-block d-md-none d-lg-block
-            </li>
-            <li>
-                hidden-lg (only) = d-block d-lg-none d-xl-block
-            </li>
-            <li>
-                hidden-xl (n/a 3.x) = d-block d-xl-none
-            </li>
-            <li>
-                visible-xs (only) = d-block d-sm-none
-            </li>
-            <li>
-                visible-sm (only) = d-none d-sm-block d-md-none
-            </li>
-            <li>
-                visible-md (only) = d-none d-md-block d-lg-none
-            </li>
-            <li>
-                visible-lg (only) = d-none d-lg-block d-xl-none
-            </li>
-            <li>
-                visible-xl (n/a 3.x) = d-none d-xl-block
-            </li>
-        </ul>
-
         <p>
-            Also note that d-*-block can be replaced with d-*-inline, d-*-flex, etc.. depending on the display type of the element.
+            This is a razor class library that entends / enhances Microsoft.AspNetCore.Identity.EntityFrameworkCore.
+
+            It adds on the ability to
+            <ul>
+                <li>managge users,</li>
+                <li>allow the site to self register or register by invitation only.</li>
+            </ul>
         </p>
 
     </div>
