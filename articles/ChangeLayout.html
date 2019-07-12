@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Steve Gossard - Change Layout .Net Core Mvc / Razor Pages</title>
+
+    <meta name="keywords" content=".Net, web development, html, css, bootstrap">
+    <meta name="description" content="Change Layout .Net Core Mvc / Razor Pages.">
+    <meta name="author" content="Steve Gossard">
+    <meta name="copyright" content="Steve Gossard">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+          integrity="sha256-BtbhCIbtfeVWGsqxk1vOHEYXS6qcvQvLMZqjtpWUEx8="
+          crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="../css/site.css?siteVersion=201906252215" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/default.min.css">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light shadow p-3 mb-3 rounded site-navebar">
+            <a class="navbar-brand" href="../index.html?version20190709A"><i class="fas fa-code"></i> Steve Gossard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="../index.html?version20190709A">Home</a>
+                    <a class="nav-item nav-link" href="index.html?version20190709A">Articles</a>
+                    <a class="nav-item nav-link" href="../security/index.html?version20190709A">Security</a>
+                    <a class="nav-item nav-link" href="../CodeBits/index.html?version20190709A">Code Bits</a>
+
+                    <a class="nav-item nav-link" href="../about.html?version20190709A">About</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container site-container">
+
+        <h1>
+            Change Layout .Net Core Mvc / Razor Pages
+        </h1>
+        <h6>
+            07/06/2019
+        </h6>
+        <hr />
+        <p>
+            Having separate layouts for pages but using the same mechanism to override the Layout specified in  _ViewStart.cshtml for both
+            .Net Core Razor Pages and .Net Core MVC pages.  This approch/mechanism leverages a custom attribute that can then be applied in both MVC and Razor.
+        </p>
+        <p>
+            The following components are created <i>(in different folders)</i>.
+            <ul>
+                <li>Custom Attribute - <b>ViewLayoutAttribute.cs</b></li>
+                <li>RazorExtensions - <b>ViewLayoutAttribute.cs</b></li>
+            </ul>
+        </p>
+        <b>_ViewStart.cshtml</b> will also need to be modified to leverage the custom view layout attribute.
+        <p>
+
+        </p>
+
+        <h4>Custom Attribute - ViewLayoutAttribute.cs</h4>
+
+<pre><code>[AttributeUsage(AttributeTargets.Class)]
+public class ViewLayoutAttribute : Attribute
+{
+    public ViewLayoutAttribute(string layoutName)
+    {
+        LayoutName = layoutName;
+    }
+
+    public string LayoutName { get; }
+}</code></pre>
+
+        <h4>RazorExtensions - ViewLayoutAttribute.cs</h4>
+
+<pre><code>public static class RazorExtensions
+{
+    public static ViewLayoutAttribute GetLayoutAttribute(this ViewContext viewContext)
+    {
+        ViewLayoutAttribute layoutAttribute = null;
+
+        // See if Razor Page...
+        if (viewContext.ActionDescriptor is CompiledPageActionDescriptor)
+        {
+            var controllerType = ((CompiledPageActionDescriptor)viewContext.ActionDescriptor).ModelTypeInfo;
+
+            if (controllerType != null)
+            {
+                layoutAttribute = Attribute.GetCustomAttribute(controllerType, typeof(ViewLayoutAttribute)) as ViewLayoutAttribute;
+
+                return layoutAttribute;
+            }
+        }
+        else
+        {
+            // See if MVC Controller...
+
+            // Property ControllerTypeInfo can be seen on runtime.
+            var controllerType = (Type)viewContext.ActionDescriptor
+                .GetType()
+                .GetProperty("ControllerTypeInfo")?
+                .GetValue(viewContext.ActionDescriptor);
+
+            if (controllerType != null && controllerType.IsSubclassOf(typeof(Microsoft.AspNetCore.Mvc.Controller)))
+            {
+                layoutAttribute = Attribute.GetCustomAttribute(controllerType, typeof(ViewLayoutAttribute)) as ViewLayoutAttribute;
+                if (layoutAttribute != null)
+                {
+                    return layoutAttribute;
+                }
+            }
+        }
+
+        return layoutAttribute;
+    }
+}</code></pre>
+
+        <h4>_ViewStart.cshtml</h4>
+
+
+<pre><code>@{
+    // Default Layout -> "_Layout"
+    Layout = ViewContext.GetLayoutAttribute()?.LayoutName ?? "_Layout";
+}</code></pre>
+
+        <h5>Usage - Razor Page</h5>
+
+<pre><code>[Attributes.ViewLayout("_LayoutAlternate")]
+public class Page2Model : PageModel
+{
+    public void OnGet()
+    {
+    ...
+    ...
+    ...
+    }
+}</code></pre>
+
+        <h5>Usage - MVC Page</h5>
+
+<pre><code>[ViewLayoutAttribute("_LayoutAlternate")]
+public class Page2Controller : Controller
+{
+    public IActionResult Index()
+    {
+        return View();
+    }
+       
+}</code></pre>
+
+    </div>
+
+    <div class="container mt-3 site-footer">
+        <a href="../about.html?version20190709A">&copy; 2019 Steve Gossard</a>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js" integrity="sha256-js+I1fdbke/DJrW2qXQlrw7VUEqmdeFeOW37UC0bEiU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
